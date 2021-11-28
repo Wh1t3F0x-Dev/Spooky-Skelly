@@ -4,6 +4,8 @@ Importacion
 #Importaciones de 
 import os
 
+from .colors import colors
+
 
 #Clase para hacer varias cosas de la instalacion. 
 class core():
@@ -66,18 +68,16 @@ class core():
         elif path == "dic":
             command=command + "./logs/dic/"
             os.system(command)
-        elif path == "passoff":
-            command=command + "./logs/passoff/"
+        elif path == "social":
+            command=command + "./logs/social/"
             os.system(command)
-        elif path == "passon":
-            command=command + "./logs/passon/"
-            os.system(command)
-        elif path == "snif":
-            command=command + "./logs/snif/"
+        elif path == "analysis":
+            command=command + "./logs/analysis/"
             os.system(command)
         print("Borrado completado.")    
         
 
-    #Metodo para poner un banner aleatorio en el cmd.
-    def ranBanner(self, list):
-        pass
+    #Metodo para poner el prompt + el color
+    def prompt(self, prompt):
+        prompt=colors.cyan + prompt
+        return prompt

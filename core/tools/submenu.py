@@ -19,18 +19,17 @@ class submenu:
     def cmenu(self, b, m):
         #Preparacion para el menu
         cmenu=core()
-
+        prompt=cmenu.prompt("SpookySkelly#~ ")
         cmenu.clearTerminal()
         #Se hace un bucle tipico de un menu
         option=0
         while option < 99:
             cmenu.clearTerminal()
-            promt=colors.cyan + "SpookySkelly#~ "
             print(b)
             print(m)
             #Hacemos el try except debido a que si meten un valor de tipo string este fallaria y no seguiria el programa.
             try:
-                option=int(input(promt))
+                option=int(input(prompt))
 
                 #Esta opcion es para el submenu de Information Gathering
                 if option==1:
@@ -54,7 +53,7 @@ class submenu:
                 elif option==4:
                     #Si ha metido como numero el 4
                     #Llamaremos al metodo de Password Attacks Online
-                    self.socialenginering(b,m)
+                    self.socialenginering(banners.bannerSocial,menuTxt.msgSocial)
 
                 #Esta opcion es para Exit the tool
                 elif option==99:
@@ -67,8 +66,6 @@ class submenu:
             except KeyboardInterrupt:
                 self.cmenu(banners.banner, menuTxt.msgIndex)
     
-    
-    
     '''
     MENU INFOGATHERING
     SUBMENUS DE INFOGATHERING
@@ -80,8 +77,7 @@ class submenu:
         #Creamos los objetos mediante el constructor
         info=core()
         sTool=simpleTool()
-        prompt=colors.cyan + "InfoGather#~ "
-
+        prompt=info.prompt("InfoGather#~ ")
         #Borramos la pantalla del terminal
         info.clearTerminal()
         #Comenzamos el bucle que haria el menu.
@@ -148,8 +144,7 @@ class submenu:
         dic=core()
         cuppTool=tool("cupp")
         crunchTool=tool("crunch")
-        prompt=colors.cyan + "DicCreation#~ "
-
+        prompt=dic.prompt("DicCreation#~ ")
         #Borramos la pantalla del terminal
         dic.clearTerminal()
         #Comenzamos el bucle que haria el menu.
@@ -189,65 +184,27 @@ class submenu:
             except KeyboardInterrupt:
                 self.diccreation(banners.bannerDictionary,menuTxt.msgDicc)
     
-    
-    
     '''
-    MENU Password Attacks Offline
-    '''
-    def passattackoff(self, b, m):
-        #Se hace un bucle tipico de un menu
-        option=0
-        while option < 99:
-            print(b)
-            print(m)
-            #Hacemos el try except debido a que si meten un valor de tipo string este fallaria y no seguiria el programa.
-            try:
-                option=int(input("Presiona un numero: "))
-                #Esta opcion es para el Whois
-                if option==1:
-                    pass
-                #Esta opcion es para el Ping
-                elif option==2:
-                    pass
-                #Esta opcion es para el Traceroute
-                elif option==3:
-                    pass
-                #Esta opcion es para el Nslookup
-                elif option==4:
-                    pass
-                #Esta opcion es para el NMAP
-                elif option==5:
-                    break
-                #Esta opcion es para Exit the tool
-                elif option==99:
-                    print("Gracias por usarme, vuelve pronto :)")
-                    core.ptc()
-                    exit()
-            except ValueError:
-                option=0
-                print("Fallo al meter los datos, Intentalo de nuevo.")
-    
-    
-    '''
-    MENU Analysis
+    MENU ANALYSIS
+    MENU NMAP
     '''
     def analysis(self, b, m):
         #Se hace un bucle tipico de un menu
         #Creamos los objetos mediante el constructor
         analysis=core()
         netTool=tool("netdiscover")
-        prompt=colors.cyan + "Analysis#~ "
-
+        prompt=analysis.prompt("Analysis#~ ")
         #Borramos la pantalla del terminal
         analysis.clearTerminal()
         #Comenzamos el bucle que haria el menu.
         option=0
         while option < 99:
+            analysis.clearTerminal()
             print(b)
             print(m)
             #Hacemos el try except debido a que si meten un valor de tipo string este fallaria y no seguiria el programa.
             try:
-                option=int(input("Presiona un numero: "))
+                option=int(input(prompt))
                 #Esta opcion es para el NMAP
                 # [1] Nmap
                 if option==1:
@@ -262,15 +219,14 @@ class submenu:
 
                 #Esta opcion es para Exit the tool
                 # [99] Go back to Main Menu
-                elif option==99:
-                    print("Gracias por usarme, vuelve pronto :)")
-                    analysis.ptc()
-                    exit()
+                elif option==99 or option > 8:
+                    self.cmenu(banners.banner, menuTxt.msgIndex)
             except ValueError:
                 option=0
                 print("Fallo al meter los datos, Intentalo de nuevo.")
             except KeyboardInterrupt:
                 self.analysis(banners.bannerAnalysis,menuTxt.msgAnalysis)
+    
 
     #Menu para la herramienta de nmap.
     def nmapMenu(self):
@@ -329,43 +285,64 @@ class submenu:
                     command="nmap -A " + target + " | tee -a " + logPath
                     #Lo ejecutamos mediante el os.system
                     os.system(command)
-                elif option == 99:
-                    self.infogathermenu(banners.bannerInfo,menuTxt.msgInfo)
+                elif option==99 or option > 8:
+                    self.cmenu(banners.banner, menuTxt.msgIndex)
             except KeyboardInterrupt:
                 self.nmapMenu()
 
     '''
-    MENU Guide
+    MENU SOCIAL ENGINERING
     '''
-    def guide(self, banner, menu):
+    def socialenginering(self, b, m):
+        #Se hace un bucle tipico de un menu
+        #Creamos los objetos mediante el constructor
+        social=core()
+        delvedTool=tool("delvedleak")
+        prompt=social.prompt("SocialEnginering#~ ")
+        #Borramos la pantalla del terminal
+        social.clearTerminal()
+
         #Se hace un bucle tipico de un menu
         option=0
         while option < 99:
-            print(banner)
-            print(menu)
+            social.clearTerminal()
+            print(b)
+            print(m)
             #Hacemos el try except debido a que si meten un valor de tipo string este fallaria y no seguiria el programa.
             try:
                 option=int(input("Presiona un numero: "))
                 #Esta opcion es para el Whois
+                # [1] 
                 if option==1:
                     pass
+
                 #Esta opcion es para el Ping
+                # [2] 
                 elif option==2:
                     pass
+
                 #Esta opcion es para el Traceroute
+                # [3] 
                 elif option==3:
-                    pass
+                    delvedTool.install()
+                    social.ptc()
+
                 #Esta opcion es para el Nslookup
+                # [1] 
                 elif option==4:
                     pass
+
                 #Esta opcion es para el NMAP
+                # [1] 
                 elif option==5:
-                    break
+                    social.deletelogs("social")
+                    social.ptc()
+
                 #Esta opcion es para Exit the tool
-                elif option==99:
-                    print("Gracias por usarme, vuelve pronto :)")
-                    self.ptc()
-                    exit()
+                elif option==99 or option > 8:
+                    self.cmenu(banners.banner, menuTxt.msgIndex)
             except ValueError:
                 option=0
                 print("Fallo al meter los datos, Intentalo de nuevo.")
+            except KeyboardInterrupt:
+                self.socialenginering(banners.bannerSocial,menuTxt.msgSocial)

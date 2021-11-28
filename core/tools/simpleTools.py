@@ -21,7 +21,7 @@ class simpleTool():
         print(banners.bannerPing)
         print("Desea guardar la informacion de este comando en un archivo¿?")
         yorn=ping.yesOrNo()
-        promt="Ping#~ "
+        promt=ping.prompt("Ping#~ ")
         value=ping.intro(promt)
         #Con esta variable del archivo guardaremos diferentes logs en diferentes archivos.
         archive="./logs/info/ping-to-" + value + ".txt"
@@ -46,7 +46,7 @@ class simpleTool():
         print(banners.bannerWhois)
         print("¿Desea guardar la informacion de este comando en un archivo?")
         yorn=whois.yesOrNo()
-        promt="Whois#~ "
+        promt=whois.prompt("Whois#~ ")
         value=whois.intro(promt)
         #Con esta variable del archivo guardaremos diferentes logs en diferentes archivos.
         archive="./logs/info/whois-to-" + value + ".txt"
@@ -69,7 +69,7 @@ class simpleTool():
         print(banners.bannerTraccer)
         print("¿Desea guardar la informacion de este comando en un archivo?")
         yorn=trace.yesOrNo()
-        promt="Trace#~ "
+        promt=trace.prompt("Trace#~ ")
         value=trace.intro(promt)
         #Con esta variable del archivo guardaremos diferentes logs en diferentes archivos.
         archive="./logs/info/trace-to-" + value + ".txt"
@@ -102,7 +102,7 @@ class simpleTool():
         print(banners.bannerNslookup)
         print("¿Desea guardar la informacion de este comando en un archivo?")
         yorn=nslookup.yesOrNo()
-        promt="Nslookup#~ "
+        promt=nslookup.prompt("Nslookup#~ ")
         value=nslookup.intro(promt)
         #Con esta variable del archivo guardaremos diferentes logs en diferentes archivos.
         archive="./logs/info/nslookup-to-" + value + ".txt"
@@ -128,7 +128,7 @@ class simpleTool():
         allinone=core()
         #Para crear el directorio de logs en caso de que no estuviera.
         allinone.exDirect("./logs/info/")
-        promt="Ping-Whois-Trace-Nslookup#~ "
+        promt=allinone.prompt("Ping-Whois-Trace-Nslookup#~ ")
         value=allinone.intro(promt)
         #Con esta variable del archivo guardaremos diferentes logs en diferentes archivos.
         archive="./logs/info/pwtn-to-" + value + ".txt"
