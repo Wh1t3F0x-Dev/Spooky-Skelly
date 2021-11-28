@@ -6,8 +6,8 @@ import os
 from ..core import *
 from ..banners import *
 from ..menutxt import *
-
 from time import gmtime, strftime
+
 
 class tool():
     '''
@@ -17,7 +17,7 @@ class tool():
         "netdiscover" : "sudo apt-get install netdiscover",
         "cupp" : "git clone https://github.com/Mebus/cupp.git ./ins-tools/cupp",
         "crunch":"sudo apt-get install crunch",
-        #"delvedleak":"",
+        "delvedleak":"git clone https://github.com/Sh4rk0-666/DelvedLeak.git ./ins-tools/delvedleak",
         #"":"",
         #"":"",
         #"":"",
@@ -82,13 +82,14 @@ class tool():
         elif nameTool == "cupp":
             print("Iniciando cupp...")
             self.cupp()
-        elif nameTool == "":
-            print("Iniciando crunch...")
-            self.crunch()
+        elif nameTool == "crunch":
+            #print("Iniciando crunch...")
+            #self.crunch()
+            pass
         elif nameTool == "delvedleak":
             print("Iniciando delvedleak...")
-            pass
-        elif nameTool == "":
+            self.delvedleak()
+        elif nameTool == "littlebrother":
             print("")
             pass
         elif nameTool == "":
@@ -120,7 +121,7 @@ class tool():
         print("Si lo activa este proceso tardara mucho mas pero sera mas indetectable.")
         print("Por otro lado si lo deja desactivado el proceso sera mas rapido pero disparará el nivel de trafico de la red.")
         yorn=netD.yesOrNo()
-        promt="netDiscover#~ "
+        promt=netD.prompt("netDiscover#~ ")
         #Creamos la carpeta para los logs.
         netD.exDirect("./logs/info/")
         if yorn:
@@ -207,7 +208,29 @@ class tool():
     '''
     #Metodo para delvedleak   
         
+    def delvedleak(self):
+        delvedleak=core()
+        delvedleak.clearTerminal()
+        print(banners.bannerDelved)
 
-        
+        #Se crea el directorio donde iran los logs
+        delvedleak.exDirect("./logs/social/")
+        #variable que almacena el nombre del archivo y donde ira.
+        archive = "./logs/social/delvedleak-" + strftime("%Y-%m-%d-%H-%M-%S", gmtime())+".txt"
+        try:
+            #Se le de permisos de ejecucion al instalador de la aplicacion
+            command="sudo chmod +x ./ins-tools/delvedleak/setup.sh"
+            os.system(command)
 
-
+            #Se le ejecuta el instalador de la aplicacion.
+            command="./ins-tools/delvedleak/setup.sh"
+            os.system(command)
+            delvedleak.clearTerminal()
+            #Se ejecuta la herramienta delvedleak.
+            command="python3 ./ins-tools/delvedleak/delvedleak.py | tee -a " + archive
+            os.system(command)
+            #Se crea el archivo
+            os.system("touch " + archive)
+        except ConnectionRefusedError:  
+            print("Por algunos inconvenientes no se puede ejecutar esta opcion, perdone las molestias.")
+            self.delvedleak()

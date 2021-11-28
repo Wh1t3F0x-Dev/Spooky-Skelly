@@ -21,5 +21,5 @@ Menu INICIAL
 '''
 
 menu=submenu()
-nAle=random.randint(0,3)
-menu.cmenu(banners.bannerList[nAle], menuTxt.msgIndex)
+#nAle=random.randint(0,3)
+menu.cmenu(banners.bannerList[3], menuTxt.msgIndex)

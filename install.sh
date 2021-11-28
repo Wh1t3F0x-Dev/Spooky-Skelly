@@ -65,6 +65,8 @@ echo "Instalando la instalacion de python."
 sudo apt-get install python3.9
 echo "Instalando nmap."
 sudo apt-get install nmap
+echo "Instalando whois."
+sudo apt-get install whois
 sleep 2
 
 clear
