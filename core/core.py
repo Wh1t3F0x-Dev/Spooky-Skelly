@@ -79,5 +79,9 @@ class core():
 
     #Metodo para poner el prompt + el color
     def prompt(self, prompt):
-        prompt=colors.cyan + prompt
+        prompt=colors.prompt + prompt
         return prompt
+
+    def banner(self, banner):
+        banner=colors.banner + banner
+        return banner

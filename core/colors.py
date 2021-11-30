@@ -17,26 +17,14 @@ class colors:
     blue = '\033[94m'
 
     #Color: cyan (se ve fuerte)
-    cyan = '\033[92m'
+    prompt = '\033[1;97m'
 
     #Color:
-    warning = '\033[93m'
+    banner = '\033[1;90m'
 
-    #Color:
-    red = '\033[91m'
+    title= '\033[1;96m'
 
-    #Color:
-    end = '\033[0m'
-
-    #Para poder subrayar
-    underline = '\033[4m'
-
-    #Color:
-    logging = '\33[34m'
-
-    #Lista de todos los colores anteriores
-    listColor=[purple, lightorange, blue, cyan, warning, red, end, underline, logging]
-
+    subtitle= '\033[1;92m'
     '''
     METODOS DE LA CLASE    
     '''

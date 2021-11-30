@@ -61,8 +61,10 @@ sudo apt-update
 sudo apt-upgrade
 
 # Descargar python3 por si no tuviera para que se pueda iniciar el menu sin problemas.
-echo "Instalando la instalacion de python."
+echo "Instalando el paquete de python."
 sudo apt-get install python3.9
+echo "Instalando el paquete de Pip"
+
 echo "Instalando nmap."
 sudo apt-get install nmap
 echo "Instalando whois."

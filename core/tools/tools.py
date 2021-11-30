@@ -10,20 +10,12 @@ from time import gmtime, strftime
 
 
 class tool():
+
     '''
-    Constantes de clases
+    VARIABLES
     '''
-    command={
-        "netdiscover" : "sudo apt-get install netdiscover",
-        "cupp" : "git clone https://github.com/Mebus/cupp.git ./ins-tools/cupp",
-        "crunch":"sudo apt-get install crunch",
-        "delvedleak":"git clone https://github.com/Sh4rk0-666/DelvedLeak.git ./ins-tools/delvedleak",
-        #"":"",
-        #"":"",
-        #"":"",
-        #"":"",
-        #"":"",
-    }
+    #Contador que usaremos mas adelante.
+    contador=0
 
     '''
     Constructor de clase
@@ -36,77 +28,119 @@ class tool():
     '''
     def getNameTool(self):
         return self.nameTool
-        
-    def getCommand(self):
-        nameTool=self.getNameTool()
-        return self.command[nameTool]
+
+    def getContador(self):
+        return self.contador
+
+    '''
+    SETTERS
+    '''
+
+    def setContador(self, contador):
+        self.contador=contador
 
     '''
     METODOS DE LA PROPIA CLASE
     '''
 
-
-
-    #Este metodo es para comprobar si cualquier herramienta esta instalada.
-    def installed(self):
-        nameTool=self.getNameTool()
-        path="/usr/bin/"+nameTool
-        path2="/usr/local/bin/"+nameTool
-        path3="/usr/local/sbin/"+nameTool
-        if os.path.isfile(path) or os.path.isfile(path2) or os.path.isfile(path3):
-            return True
-        else:
-            return False
-
-    #Este metodo es para instalar la aplicacion que haga falta e iniciarla una vez instalada, por su defecto llama al metodo de comprobar si esta instalada
-    def install(self):
-        nameTool=self.getNameTool()
-        command=self.getCommand()
-        if self.installed():
-            print("Herramienta ya instalada.")
-            ############################################################importanteeeeeeeeeeeeeeeeeeee
-            self.run()
-        else:
-            print("Instalando la aplicacion de " + nameTool)
-            print("Esto puede tardar un momento, por favor espere...")
-            os.system(command)
-            self.run()
-  
-
     def run(self):
-        nameTool=self.getNameTool()
+        contador=self.getContador()
+        contador+=1
+        self.setContador(contador)
+        self.indexTool()
         
-        if nameTool == "netdiscover":
-            print("Iniciando el netDiscover...")
-            self.netDiscover()
-        elif nameTool == "cupp":
-            print("Iniciando cupp...")
-            self.cupp()
-        elif nameTool == "crunch":
-            #print("Iniciando crunch...")
-            #self.crunch()
-            pass
-        elif nameTool == "delvedleak":
-            print("Iniciando delvedleak...")
-            self.delvedleak()
-        elif nameTool == "littlebrother":
-            print("")
-            pass
-        elif nameTool == "":
-            print("")
-            pass
-        elif nameTool == "":
-            print("")
-            pass
-        elif nameTool == "":
-            print("")
-            pass
-        elif nameTool == "":
-            print("")
-            pass
-        elif nameTool == "":
-            print("")
-            pass
+    def indexTool(self):
+        number=self.getContador()
+        nameTool=self.getNameTool()
+        if number==1:
+            if nameTool == "netdiscover":
+                self.insNetdiscover()
+            elif nameTool == "cupp":
+                self.insCupps()
+            elif nameTool == "crunch":
+                #self.crunch()
+                pass
+            elif nameTool == "delvedleak":
+                self.insDelved()
+            elif nameTool == "littlebrother":
+                self.insLittle()
+            elif nameTool == "":
+                pass
+            elif nameTool == "":
+                pass
+            elif nameTool == "":
+                pass
+            elif nameTool == "":
+                pass
+            elif nameTool == "":
+                pass
+        else:
+            if nameTool == "netdiscover":
+                self.netDiscover()
+            elif nameTool == "cupp":
+                self.cupp()
+            elif nameTool == "crunch":
+                #self.crunch()
+                pass
+            elif nameTool == "delvedleak":
+                self.delvedleak()
+            elif nameTool == "littlebrother":
+                self.littlebrother()
+            elif nameTool == "":
+                pass
+            elif nameTool == "":
+                pass
+            elif nameTool == "":
+                pass
+            elif nameTool == "":
+                pass
+            elif nameTool == "":
+                pass    
+    '''
+    INSTALADORES DE LAS APLICACIONES
+    '''
+
+    #Metodo para instalar NetDiscover  
+    def insNetdiscover(self):
+        os.system("sudo apt-get install netdiscover")
+        self.netDiscover()
+
+    #Metodo apra instalar Cupps
+    def insCupps(self):
+        os.system("git clone https://github.com/Mebus/cupp.git ./ins-tools/cupp")
+        self.cupp()
+    
+    #Metodo para instalar delvedleak
+    def insDelved(self):
+        os.system("git clone https://github.com/Sh4rk0-666/DelvedLeak.git ./ins-tools/delvedleak")
+        #Se le de permisos de ejecucion al instalador de la aplicacion
+        command="sudo chmod +x ./ins-tools/delvedleak/setup.sh"
+        os.system(command)
+
+        #Se le ejecuta el instalador de la aplicacion.
+        command="./ins-tools/delvedleak/setup.sh"
+        os.system(command)
+        codigo='''
+	except: 
+		print("Por algunos inconvenientes no se puede ejecutar esta opcion, perdone las molestias.")
+		Main()
+            '''
+        archive2="./ins-tools/delvedleak/delvedleak.py"
+        with open(archive2, "a") as txt:
+            txt.write(codigo)
+        
+        self.delvedleak()
+    
+
+    def insLittle(self):
+        os.system("git clone https://github.com/lulz3xploit/LittleBrother.git ./ins-tools/littlebrother")
+        #Se le de permisos de ejecucion al instalador de la aplicacion
+        print("Instalando los requisitos de la aplicacion...")
+        os.system("python3 -m pip install -r ./ins-tools/littlebrother/requirements.txt")
+        self.littlebrother()
+        
+
+
 
     '''
     METODOS PARTICULARES DE LAS HERRAMIENTAS
@@ -173,10 +207,12 @@ class tool():
         os.system(command)
     
     
+    
+    '''
     #Metodo par ausar la herramienta de crunch
     #Problema con la herramienta es que puede tener demasiadas opciones para que se use asi a la ligera
     #Encontrar una forma tipo menu o algo que haga que se pueda hacer mas facil o lo que sea.
-    '''
+    
     def crunch(self):
         promt="Crunch#~ "
         crunch=core()
@@ -212,25 +248,23 @@ class tool():
         delvedleak=core()
         delvedleak.clearTerminal()
         print(banners.bannerDelved)
-
         #Se crea el directorio donde iran los logs
         delvedleak.exDirect("./logs/social/")
         #variable que almacena el nombre del archivo y donde ira.
         archive = "./logs/social/delvedleak-" + strftime("%Y-%m-%d-%H-%M-%S", gmtime())+".txt"
-        try:
-            #Se le de permisos de ejecucion al instalador de la aplicacion
-            command="sudo chmod +x ./ins-tools/delvedleak/setup.sh"
-            os.system(command)
+        #Se ejecuta la herramienta delvedleak.
+        command="python3 ./ins-tools/delvedleak/delvedleak.py | tee -a " + archive
+        os.system(command)
 
-            #Se le ejecuta el instalador de la aplicacion.
-            command="./ins-tools/delvedleak/setup.sh"
-            os.system(command)
-            delvedleak.clearTerminal()
-            #Se ejecuta la herramienta delvedleak.
-            command="python3 ./ins-tools/delvedleak/delvedleak.py | tee -a " + archive
-            os.system(command)
-            #Se crea el archivo
-            os.system("touch " + archive)
-        except ConnectionRefusedError:  
-            print("Por algunos inconvenientes no se puede ejecutar esta opcion, perdone las molestias.")
-            self.delvedleak()
+    #Metodo para LittleBrother
+
+    def littlebrother(self):
+        littlebrother=core()
+        littlebrother.clearTerminal()
+        #Se crea el directorio donde iran los logs
+        littlebrother.exDirect("./logs/social/")
+        #variable que almacena el nombre del archivo y donde ira.
+        archive = "./logs/social/littlebrother-" + strftime("%Y-%m-%d-%H-%M-%S", gmtime())+".txt"
+        #Se ejecuta la herramienta delvedleak.
+        command="python3 ./ins-tools/littlebrother/LittleBrother.py | tee -a " + archive
+        os.system(command)

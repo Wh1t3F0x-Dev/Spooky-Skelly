@@ -19,8 +19,9 @@ class submenu:
     def cmenu(self, b, m):
         #Preparacion para el menu
         cmenu=core()
-        prompt=cmenu.prompt("SpookySkelly#~ ")
+        prompt=cmenu.prompt("Spooky💀Skelly#~ ")
         cmenu.clearTerminal()
+        b=cmenu.banner(b)
         #Se hace un bucle tipico de un menu
         option=0
         while option < 99:
@@ -58,7 +59,9 @@ class submenu:
                 #Esta opcion es para Exit the tool
                 elif option==99:
                     print("Saliendo de la herramienta...")
-                    cmenu.sleep(1)
+                    command="rm -rf ./ins-tools/*"
+                    os.system(command)
+                    cmenu.ptc()
                     exit()
             except ValueError:
                 option=0
@@ -78,6 +81,7 @@ class submenu:
         info=core()
         sTool=simpleTool()
         prompt=info.prompt("InfoGather#~ ")
+        b=info.banner(b)
         #Borramos la pantalla del terminal
         info.clearTerminal()
         #Comenzamos el bucle que haria el menu.
@@ -145,6 +149,7 @@ class submenu:
         cuppTool=tool("cupp")
         crunchTool=tool("crunch")
         prompt=dic.prompt("DicCreation#~ ")
+        b=dic.banner(b)
         #Borramos la pantalla del terminal
         dic.clearTerminal()
         #Comenzamos el bucle que haria el menu.
@@ -161,12 +166,12 @@ class submenu:
                 #Esta opcion es para el CuPP
                 # [1] CuPP
                 if option==1:
-                    cuppTool.install()
+                    cuppTool.run()
 
                 #Esta opcion es para el Crunch
                 # [2] Crunch
                 elif option==2:
-                    crunchTool.install()
+                    crunchTool.run()
 
                 #Para borrar los registros.
                 # [3] Delete All Logs
@@ -194,6 +199,7 @@ class submenu:
         analysis=core()
         netTool=tool("netdiscover")
         prompt=analysis.prompt("Analysis#~ ")
+        b=analysis.banner(b)
         #Borramos la pantalla del terminal
         analysis.clearTerminal()
         #Comenzamos el bucle que haria el menu.
@@ -214,7 +220,7 @@ class submenu:
                 #Esta opcion es para el netDiscover
                 # [2] Netdiscover
                 elif option==2:
-                    netTool.install()
+                    netTool.run()
                     analysis.ptc()
 
                 #Esta opcion es para Exit the tool
@@ -298,7 +304,9 @@ class submenu:
         #Creamos los objetos mediante el constructor
         social=core()
         delvedTool=tool("delvedleak")
+        little=tool("littlebrother")
         prompt=social.prompt("SocialEnginering#~ ")
+        b=social.banner(b)
         #Borramos la pantalla del terminal
         social.clearTerminal()
 
@@ -310,7 +318,7 @@ class submenu:
             print(m)
             #Hacemos el try except debido a que si meten un valor de tipo string este fallaria y no seguiria el programa.
             try:
-                option=int(input("Presiona un numero: "))
+                option=int(input(prompt))
                 #Esta opcion es para el Whois
                 # [1] 
                 if option==1:
@@ -321,17 +329,17 @@ class submenu:
                 elif option==2:
                     pass
 
-                #Esta opcion es para el Traceroute
-                # [3] 
+                #Esta opcion es para el DelvedLeak
+                # [3] DelvedLeak
                 elif option==3:
-                    delvedTool.install()
+                    delvedTool.run()
                     social.ptc()
 
                 #Esta opcion es para el Nslookup
                 # [1] 
                 elif option==4:
-                    pass
-
+                    little.run()
+                    social.ptc()
                 #Esta opcion es para el NMAP
                 # [1] 
                 elif option==5:
