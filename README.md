@@ -35,12 +35,12 @@ Created by jfmartin1410
 - NetDiscover
 
 ### Herramientas Ingenieria Social y OSINT
-##### OSINT
+#### OSINT
 
 - Delvedleak 
 - LittleBrother
 
-##### Ingenieria Social
+#### Ingenieria Social
 
 - zphisher
 
