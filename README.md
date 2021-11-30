@@ -25,22 +25,22 @@ Created by jfmartin1410
 - Traceroute
 - Nslookup
 
+### Herramientas Diccionarios y Contraseñas
+
+- CuPP
+
 ### Herramientas Analisis
 
 - Nmap
+- NetDiscover
 
-### Herramientas Creacion Diccionarios
+### Herramientas Ingenieria Social y OSINT
+##### OSINT
 
-- Crunch
-- CuPP
+- Delvedleak 
+- LittleBrother
 
-### Herramientas Ataque Diccionario Offline
-
-- John The Ripper
-- Hashcat
-- Hash-identifier
-
-### Herramientas Ingenieria Social
+##### Ingenieria Social
 
 - zphisher
 
@@ -50,7 +50,6 @@ Created by jfmartin1410
 - Cualquier Distribucion de linux (En principio solo esta probado en kali-linux, ubuntu y debian.)
 - Tener el paquete instalado "git". (Para una instalacion mas facil.)
 - Python 3 instalado (Es preferible tenerlo instalado).
-- 
 
 # Instalacion
 
