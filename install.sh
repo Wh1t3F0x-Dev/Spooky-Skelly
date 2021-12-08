@@ -64,11 +64,22 @@ sudo apt-upgrade
 echo "Instalando el paquete de python."
 sudo apt-get install python3.9
 echo "Instalando el paquete de Pip"
-
+sudo apt-get install pip
 echo "Instalando nmap."
 sudo apt-get install nmap
 echo "Instalando whois."
 sudo apt-get install whois
+echo "Instalando php."
+sudo apt-get install php
+echo "Instalando whois."
+sudo pip3 install requests
+echo "Instalando requests."
+sudo pip3 install smtp
+echo "Instalando smtp."
+#echo "Instalando pyshorteners"
+#pip install pyshorteners
 sleep 2
 
 clear
+
+python3 spooky-skelly.py

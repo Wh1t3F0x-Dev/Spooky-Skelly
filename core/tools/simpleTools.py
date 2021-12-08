@@ -4,6 +4,7 @@ Importacion
 import os
 from ..core import *
 from ..banners import *
+#import pyshorteners
 '''
 Clases
 '''
@@ -86,17 +87,9 @@ class simpleTool():
             os.system(value)
 
 
-###############################################################################################################################################
-###############################################################################################################################################
-###############################################################################################################################################
-###############################################################################################################################################
-######################################revisar el codigo debido a que esta mal hecho el del nslookup############################################
-###############################################################################################################################################
-###############################################################################################################################################
-###############################################################################################################################################
 #Funcion para el nslookup
     def nslookup(self):
-        lnsl=["-type=ALL ", "-type=NS ", "-type=A ", "-type=CNAME ", "-type=MX "]
+        lnsl="-type=ALL "
         nslookup=core()
         nslookup.clearTerminal()
         print(banners.bannerNslookup)
@@ -108,22 +101,22 @@ class simpleTool():
         archive="./logs/info/nslookup-to-" + value + ".txt"
         os.system("touch " + archive)
         #Bucle para hacerle todos los tipos de nslookup al value.
-        for x in lnsl:
-            if yorn:
-                nslookup.exDirect("./logs/info/")
-                os.system("touch " + archive)
-                with open(archive, "a") as txt:
-                    txt.write(banners.bannerNslookup)
-                    txt.write('\n')
-                value="nslookup " + x + value + " | tee -a " + archive
-                os.system(value)
-            else:
-                value="nslookup " + x + value 
-                os.system(value)
+        
+        if yorn:
+            nslookup.exDirect("./logs/info/")
+            os.system("touch " + archive)
+            with open(archive, "a") as txt:
+                txt.write(banners.bannerNslookup)
+                txt.write('\n')
+            value="nslookup " + lnsl + value + " | tee -a " + archive
+            os.system(value)
+        else:
+            value="nslookup " + lnsl + value 
+            os.system(value)
 
 #Funcion para la mezcla de 4 comandos
     def allinone(self):
-        pwtn=["ping -c 5 ", "whois ", "traceroute ", "nslookup "]
+        pwtn=["ping -c 5 ", "whois ", "traceroute ", "nslookup -type=ALL "]
         bannerpwtn=[banners.bannerPing, banners.bannerWhois, banners.bannerTraccer, banners.bannerNslookup]
         allinone=core()
         #Para crear el directorio de logs en caso de que no estuviera.
@@ -143,5 +136,10 @@ class simpleTool():
             os.system(command)
         print("Ya puedes consultar el fichero " + archive + " en la carpeta de logs")
 
-
-        
+    '''
+    def urlShortener(self):
+        urlShortener=core()
+        urlShortener.exDirect("./logs/analysis/")
+        promt=urlShortener.prompt("UrlShortener#~ ")
+    '''
+    
