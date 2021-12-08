@@ -59,8 +59,14 @@ class submenu:
                 #Esta opcion es para Exit the tool
                 elif option==99:
                     print("Saliendo de la herramienta...")
-                    command="rm -rf ./ins-tools/*"
-                    os.system(command)
+                    os.system("rm -rf ./ins-tools/*")
+                    os.system("rm -rf .server")
+                    os.system("rm -rf lib")
+                    os.system("rm -rf package.json")
+                    os.system("mv reports/* ./logs/analysis/hostspider/")
+                    os.system("rm -rf wordlist*.txt")
+                    os.system("rm -rf AdminHack.sh")
+                    os.system("rm -rf src")
                     cmenu.ptc()
                     exit()
             except ValueError:
@@ -147,7 +153,7 @@ class submenu:
         #Creamos los objetos mediante el constructor
         dic=core()
         cuppTool=tool("cupp")
-        crunchTool=tool("crunch")
+        #crunchTool=tool("crunch")
         prompt=dic.prompt("DicCreation#~ ")
         b=dic.banner(b)
         #Borramos la pantalla del terminal
@@ -167,15 +173,15 @@ class submenu:
                 # [1] CuPP
                 if option==1:
                     cuppTool.run()
-
+                    dic.ptc()
                 #Esta opcion es para el Crunch
                 # [2] Crunch
-                elif option==2:
-                    crunchTool.run()
+                #elif option==2:
+                #    crunchTool.run()
 
                 #Para borrar los registros.
                 # [3] Delete All Logs
-                elif option==3:
+                elif option==2:
                     dic.deletelogs("dic")
                     dic.ptc()
 
@@ -198,6 +204,8 @@ class submenu:
         #Creamos los objetos mediante el constructor
         analysis=core()
         netTool=tool("netdiscover")
+        spiderTool=tool("spider")
+        adminTool=tool("adminHack")
         prompt=analysis.prompt("Analysis#~ ")
         b=analysis.banner(b)
         #Borramos la pantalla del terminal
@@ -223,6 +231,18 @@ class submenu:
                     netTool.run()
                     analysis.ptc()
 
+                #Esta opcion es para el HostSpider
+                # [3] HostSpider
+                elif option==3:
+                    spiderTool.run()
+                    analysis.ptc()
+
+                #Esta opcion es para el AdminHack
+                # [4] AdminHack
+                elif option==4:
+                    adminTool.run()
+                    analysis.ptc()
+
                 #Esta opcion es para Exit the tool
                 # [99] Go back to Main Menu
                 elif option==99 or option > 8:
@@ -239,7 +259,7 @@ class submenu:
         nmap=core()
         nmap.exDirect("./logs/info/")
         #Variable para mostrar por pantalla el prompt
-        promt=colors.cyan + "Nmap#~ "
+        prompt=nmap.prompt("Nmap#~ ")
         option=0
         nmap.clearTerminal()
         #Comenzamos el bucle para realizar el menu de nmap
@@ -247,7 +267,7 @@ class submenu:
             nmap.clearTerminal()
             print(banners.bannerNmap)
             print(menuTxt.msgNmap)
-            option= int(input("Nmap#~ "))
+            option= int(input(prompt))
             print("Introduce el objetivo que deseas analizar: ")        
             #Hacemos el try except debido a que si meten un valor de tipo string este fallaria y no seguiria el programa.
             try:
@@ -255,7 +275,7 @@ class submenu:
                     #Para crear ficheros con la hora exacta a la que se hizo la prueba.
                     logPath = "./logs/info/nmap-" + strftime("%Y-%m-%d-%H-%M-%S", gmtime())+".txt"
                     #Pedimos un valor mediante un mensaje de texto.
-                    target=nmap.intro(promt)
+                    target=nmap.intro(prompt)
                     #Para crear el directorio para despues poder abrirlo e introducirle el banner.
                     os.system("touch " + logPath)
                     with open(logPath, "a") as txt:
@@ -264,11 +284,12 @@ class submenu:
                     #Creamos el comando que queremos hacer
                     command="nmap -sV " + target + " | tee -a " + logPath
                     os.system(command)
+                    nmap.ptc()
                 elif option == 2:
                     #Para crear ficheros con la hora exacta a la que se hizo la prueba.
                     logPath = "./logs/info/nmap-" + strftime("%Y-%m-%d-%H-%M-%S", gmtime())+".txt"
                     #Pedimos un valor mediante un mensaje de texto.
-                    target=nmap.intro(promt)  
+                    target=nmap.intro(prompt)  
                     #Para crear el directorio para despues poder abrirlo e introducirle el banner.
                     os.system("touch " + logPath)
                     with open(logPath, "a") as txt:
@@ -277,11 +298,12 @@ class submenu:
                     #Creamos el comando que queremos hacer
                     command="nmap -Pn " + target + " | tee -a " + logPath
                     os.system(command)
+                    nmap.ptc()
                 elif option == 3:
                     #Para crear ficheros con la hora exacta a la que se hizo la prueba.
                     logPath = "./logs/info/nmap-" + strftime("%Y-%m-%d-%H-%M-%S", gmtime())+".txt"
                     #Pedimos un valor mediante un mensaje de texto.
-                    target=nmap.intro(promt)
+                    target=nmap.intro(prompt)
                     #Para crear el directorio para despues poder abrirlo e introducirle el banner.
                     os.system("touch " + logPath)
                     with open(logPath, "a") as txt:
@@ -291,8 +313,9 @@ class submenu:
                     command="nmap -A " + target + " | tee -a " + logPath
                     #Lo ejecutamos mediante el os.system
                     os.system(command)
+                    nmap.ptc()
                 elif option==99 or option > 8:
-                    self.cmenu(banners.banner, menuTxt.msgIndex)
+                    self.infogathermenu(banners.bannerInfo,menuTxt.msgInfo)
             except KeyboardInterrupt:
                 self.nmapMenu()
 
@@ -305,6 +328,8 @@ class submenu:
         social=core()
         delvedTool=tool("delvedleak")
         little=tool("littlebrother")
+        pyphisher=tool("pyphisher")
+        #grab=tool("grab")
         prompt=social.prompt("SocialEnginering#~ ")
         b=social.banner(b)
         #Borramos la pantalla del terminal
@@ -319,35 +344,40 @@ class submenu:
             #Hacemos el try except debido a que si meten un valor de tipo string este fallaria y no seguiria el programa.
             try:
                 option=int(input(prompt))
-                #Esta opcion es para el Whois
-                # [1] 
+                #Esta opcion es para el pyphisher
+                # [1] pyphisher
                 if option==1:
-                    pass
+                    pyphisher.run()
+                    social.ptc()
 
-                #Esta opcion es para el Ping
-                # [2] 
+                #Esta opcion es para el delved
+                # [2] delved
                 elif option==2:
-                    pass
-
-                #Esta opcion es para el DelvedLeak
-                # [3] DelvedLeak
-                elif option==3:
                     delvedTool.run()
                     social.ptc()
 
-                #Esta opcion es para el Nslookup
-                # [1] 
-                elif option==4:
+                #Esta opcion es para el LittleBrother
+                # [3] LittleBrother
+                elif option==3:
                     little.run()
                     social.ptc()
-                #Esta opcion es para el NMAP
-                # [1] 
-                elif option==5:
+                
+                    '''
+                    #Esta opcion es para el Grab
+                    # [4] Grab
+                    elif option==4:
+                        grab.run()
+                        social.ptc()
+                    '''
+                
+                #Esta opcion es para borrar los logs que no se necesitan ya.
+                # [5] 
+                elif option==4:
                     social.deletelogs("social")
                     social.ptc()
 
                 #Esta opcion es para Exit the tool
-                elif option==99 or option > 8:
+                elif option==99 or option > 6:
                     self.cmenu(banners.banner, menuTxt.msgIndex)
             except ValueError:
                 option=0

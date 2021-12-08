@@ -13,7 +13,7 @@ Configuraciones Previas
 #Importacion de las librerias o modulos
 from core.core import *
 from core.tools.submenu import *
-import random
+#import random
 
 
 '''

@@ -4,7 +4,7 @@ class menuTxt:
 
     '''
     MENUS GENERALES
-    '''
+    '''                         
 
     msgIndex=colors.title + '''
 (+) Tools Menus:''' + colors.subtitle + '''
@@ -31,31 +31,32 @@ class menuTxt:
     msgDicc=colors.title + '''
 (+) Dictionaries Tools:''' + colors.subtitle + '''
     [1] CuPP''' + colors.title + '''
-(+) Password Attack Tools:''' + colors.subtitle + '''
-    [2] Crunch''' + colors.title + '''
 (+) Other Options:''' + colors.subtitle + '''
-    [3] Delete All Logs
+    [2] Delete All Logs
     [99] Go back to Main Menu
     '''
+#(+) Password Attack Tools:''' + colors.subtitle + '''
+#    [2] Crunch''' + colors.title + '''
 
     msgAnalysis=colors.title + '''
 (+) Analysis Tools:''' + colors.subtitle + '''
     [1] Nmap
-    [2] Netdiscover''' + colors.title + '''
+    [2] Netdiscover
+    [3] HostSpider
+    [4] AdminHack''' + colors.title + '''
 (+) Other Options:''' + colors.subtitle + '''
-    [3] Delete All Logs
+    [5] Delete All Logs
     [99] Go back to Main Menu
     '''
 
     msgSocial=colors.title + '''
 (+) SocialEnginering Tools: ''' + colors.subtitle + '''
-    [1]
-    [2] ''' + colors.title + '''
+    [1] zPhisher ''' + colors.title + '''
 (+) OSINT Tools: ''' + colors.subtitle + '''    
-    [3] DelvedLeak 
-    [4] LittleBrother''' + colors.title + '''
+    [2] DelvedLeak 
+    [3] LittleBrother ''' + colors.title + '''
 (+) Other Options:''' + colors.subtitle + '''
-    [5] Delete All Logs
+    [4] Delete All Logs
     [99] Go back to Main Menu
     '''
 

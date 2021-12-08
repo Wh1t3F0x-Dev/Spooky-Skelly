@@ -1,4 +1,4 @@
-import random
+#import random
 
 #Clase para poner atributos de colores 
 class colors:
@@ -28,7 +28,7 @@ class colors:
     '''
     METODOS DE LA CLASE    
     '''
-
+    '''
     #Getter para conseguir la lista de colores.
     def getLC (self):
         return self.listColor
@@ -41,3 +41,5 @@ class colors:
             random.shuffle(LC)
         #Devuelve el primer valor de la lista
         return LC[0]
+    '''
+    
