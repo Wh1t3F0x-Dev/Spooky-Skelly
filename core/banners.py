@@ -248,4 +248,4 @@ Spooky-Skelly
 Created by jfmartin1410
 '''
 
-    #bannerList=[bannerFsociety,bannerPumking,bannerSkull,banner]
+    bannerList=[bannerFsociety,bannerPumking,bannerSkull,banner]
