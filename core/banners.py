@@ -5,7 +5,7 @@ class banners:
 \__ \ | '_ \ / _ \ / _ \ | / / | || |   \__ \ | / / / -_) | | | | | || |
 |___/ | .__/ \___/ \___/ |_\_\  \_, |   |___/ |_\_\ \___| |_| |_|  \_, |
       |_|                       |__/                               |__/ 
-Created by jfmartin1410
+Created by KuroRyuka
 '''
 
     bannerInfo='''
@@ -159,7 +159,7 @@ __      __  _            _
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
 Spooky-Skelly
-Created by jfmartin1410
+Created by KuroRyuka
 '''
 
     bannerFsociety='''
@@ -218,7 +218,7 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 Spooky-Skelly
-Created by jfmartin1410
+Created by KuroRyuka
 '''
 
     bannerPumking='''
@@ -245,7 +245,7 @@ Created by jfmartin1410
         ██████████████████████████
 
 Spooky-Skelly
-Created by jfmartin1410
+Created by KuroRyuka
 '''
 
     bannerList=[bannerFsociety,bannerPumking,bannerSkull,banner]
