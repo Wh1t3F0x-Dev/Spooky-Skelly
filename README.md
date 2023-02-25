@@ -4,7 +4,7 @@
 |__   || . || . || . || '_|| | |  |__   || '_|| -_|| || || | |
 |_____||  _||___||___||_,_||_  |  |_____||_,_||___||_||_||_  |
        |_|                 |___|                         |___|
-Created by KuroRyuka
+Created by WhiteFox
 ```
 <div align="center">
 
@@ -95,7 +95,7 @@ cd .. && rm -rf spooky-skelly
 
 Bienvenido a la herramienta de Spooky Skelly la cual es una herramienta especialmente diseñada para hacer auditorias.
 
-Esta herramienta ha sido creada por @KuroRyuka, lo que quiere decir que yo como mi persona no me hago cargo por un
+Esta herramienta ha sido creada por @WhiteFox, lo que quiere decir que yo como mi persona no me hago cargo por un
 mal uso o de un uso ilicito el cual afecte a terceros.
 Esta realizada para un uso didactico y para la realizacion de auditorias en entornos controlados.
 Por lo tanto si lo vas a usar para acciones ilicitas o en entornos no controlados abstente de instalar esta herramienta.
